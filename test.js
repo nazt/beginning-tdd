@@ -32,9 +32,21 @@ YUI().use('test', 'console', function (Y) {
             delete this.data;
         },
 
+
       });
 
-      Y.Test.Runner.add(paddle);
+      var ExampleSuite = new Y.Test.Suite("Example Suite");
+      ExampleSuite.add(paddle);
+
+      //create the console
+      var r = new Y.Console({
+          newestOnTop : true,
+          style: 'block' // to anchor in the example content
+      });
+
+      r.render('#testLogger');
+
+      Y.Test.Runner.add(ExampleSuite);
 
       Y.Test.Runner.run();
 

@@ -3,14 +3,50 @@
   <head>
     <title>Pong Tests</title>
     <meta charset="utf-8" />
+    <style type="text/css">
+    /*margin and padding on body element
+      can introduce errors in determining
+      element position and are not recommended;
+      we turn them off as a foundation for YUI
+      CSS treatments. */
+    body {
+      margin:0;
+      padding:0;
+    }
+    </style>
+
+    <link type="text/css" rel="stylesheet" href="http://yui.yahooapis.com/3.3.0/build/cssfonts/fonts-min.css" />
+    <!--begin custom header content for this example-->
+    <style type="text/css">
+    #testLogger {
+        margin-bottom: 1em;
+    }
+
+    #testLogger .yui3-console .yui3-console-title {
+        border: 0 none;
+        color: #000;
+        font-size: 13px;
+        font-weight: bold;
+        margin: 0;
+        text-transform: none;
+    }
+    #testLogger .yui3-console .yui3-console-entry-meta {
+        margin: 0;
+    }
+
+    .yui3-skin-sam .yui3-console-entry-pass .yui3-console-entry-cat {
+        background: #070;
+        color: #fff;
+    }
+    </style>
+
+    <!--end custom header content for this example-->
   </head>
-  <body>
-    <canvas id="pong" width="800" height="600">
-    <p>
-    Upgrade your browser!
-    </p>
-    </canvas>
-    <script type="text/javascript" charset="utf-8" src="deps/yui-min.js"></script>
+  <body class="yui3-skin-sam  yui-skin-sam">
+
+    <script type="text/javascript" src="http://yui.yahooapis.com/3.3.0/build/yui/yui-min.js"></script>
     <script type="text/javascript" src="test.js"></script>
+
+    <div id="testLogger"></div>
   </body>
 </html>
