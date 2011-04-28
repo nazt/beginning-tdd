@@ -1,16 +1,3 @@
-/*global window */
-/*
-"use strict";
-
-if (typeof Object.create !== 'function') {
-    Object.create = function (o) {
-        var F = function () {};
-        F.prototype = o;
-        return new F();
-    };
-}
-*/
-
 YUI().use('test', 'console', function (Y) {
       var testCase = new Y.Test.Case({
 
