@@ -1,4 +1,5 @@
-/*global window, YUI, PONG, ARNIE */
+/*global window */
+/*
 "use strict";
 
 if (typeof Object.create !== 'function') {
@@ -8,35 +9,52 @@ if (typeof Object.create !== 'function') {
         return new F();
     };
 }
+*/
 
 YUI().use('test', 'console', function (Y) {
+      var testCase = new Y.Test.Case({
 
+          name: "TestCase Name",
 
-    var paddle = new Y.Test.Case({
-        name: 'paddle',
-        //---------------------------------------------------------------------
-        // setUp and tearDown methods - optional
-        //---------------------------------------------------------------------
+          //---------------------------------------------
+          // Special instructions
+          //---------------------------------------------
 
-        /*
-         * Sets up data that is needed by each test.
-         */
-        setUp: function () {
-            this.paddle = Object.create(PONG.paddle1);
-            this.paddle.height = 100;
-        },
-        /*
-         * Cleans up everything that was created by setUp().
-         */
-        tearDown : function () {
-            delete this.data;
-        },
+          _should: {
+              ignore: {
+                  testName: true //ignore this test
+              }
+          },
 
+          //---------------------------------------------
+          // Setup and tear down
+          //---------------------------------------------
+
+          setUp : function () {
+              this.data = { name : "Nicholas", age : 28 };
+          },
+
+          tearDown : function () {
+              delete this.data;
+          },
+
+          //---------------------------------------------
+          // Tests
+          //---------------------------------------------
+
+          testName: function () {
+              Y.Assert.areEqual("Nicholas", this.data.name, "Name should be 'Nicholas'");
+          },
+
+          testAge: function () {
+              Y.Assert.areEqual(28, this.data.age, "Age should be 28");
+          }
 
       });
 
+      //example test suite
       var ExampleSuite = new Y.Test.Suite("Example Suite");
-      ExampleSuite.add(paddle);
+      ExampleSuite.add(testCase);
 
       //create the console
       var r = new Y.Console({
@@ -46,8 +64,8 @@ YUI().use('test', 'console', function (Y) {
 
       r.render('#testLogger');
 
+      //run test
       Y.Test.Runner.add(ExampleSuite);
-
       Y.Test.Runner.run();
 
 })
