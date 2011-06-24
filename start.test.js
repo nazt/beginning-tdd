@@ -1,7 +1,7 @@
 YUI().use('test', 'console', function (Y) {
       var testCase = new Y.Test.Case({
 
-          name: "TestCase Name",
+          name: "Test function mycat",
 
           //---------------------------------------------
           // Special instructions
@@ -43,6 +43,9 @@ YUI().use('test', 'console', function (Y) {
           },
           testMyCatWithTwoParameters: function() {
               Y.Assert.areEqual("Hello, nat", mycat("Hello", ", nat"));
+          },
+          testMyCatWithOutParameter: function() {
+              Y.Assert.areEqual(undefined, mycat());
           },
 
       });
