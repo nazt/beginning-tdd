@@ -9,7 +9,7 @@ YUI().use('test', 'console', function (Y) {
 
           _should: {
               ignore: {
-                  testName: true //ignore this test
+                  testName: true, //ignore this test
               }
           },
 
@@ -18,40 +18,56 @@ YUI().use('test', 'console', function (Y) {
           //---------------------------------------------
 
           setUp : function () {
-              this.data = { name : "Nicholas", age : 28 };
+
           },
 
           tearDown : function () {
-              delete this.data;
+
           },
 
           //---------------------------------------------
           // Tests
           //---------------------------------------------
 
-          testName: function () {
-              Y.Assert.areEqual("Nicholas", this.data.name, "Name should be 'Nicholas'");
+          testIsItFunction: function () {
+              Y.Assert.areEqual("function", typeof mycat, "type of 'mycat' should be functionbe.");
           },
-          testAge: function () {
-              Y.Assert.areEqual(28, this.data.age, "Age should be 28");
-          }
+          testMyCatWithOneParameter: function() {
+              Y.Assert.areEqual("Hello", mycat("Hello"));
+          },
+          testMyCatWithLeftWithSpecialTextAndRightIsNull: function() {
+              Y.Assert.areEqual("Hello, nat", mycat("Hello, nat"));
+          },
+          testMyCatWithLeftIsNullRightIsNotNull: function() {
+              Y.Assert.areEqual("Hello, nat", mycat(null, "Hello, nat"));
+          },
+          testMyCatWithTwoParameters: function() {
+              Y.Assert.areEqual("Hello, nat", mycat("Hello", ", nat"));
+          },
+
       });
+
       //example test suite
       var ExampleSuite = new Y.Test.Suite("Example Suite");
+
       ExampleSuite.add(testCase);
 
-      //Use console on Web or Use console.log
-      var useWebConsole = false;
-        if (useWebConsole) {
+      /**
+        * Use console on Web or Use console.log
+        */
+      var useWebConsole = true;
+
+      if (useWebConsole) {
         var r = new Y.Console({
             newestOnTop : true,
             style: 'block' // to anchor in the example content
         });
         r.render('#testLogger');
-      } //ConsoleType
+      }
 
       //run test
       Y.Test.Runner.add(ExampleSuite);
       Y.Test.Runner.run();
 
 })
+
