@@ -1,13 +1,3 @@
-var mycat = function(left, right) {
-  var result = "";
-  if (left == undefined) {
-    result = right;
-  }
-  else if(right == null)  {
-    result = left;
-  }
-  else {
-    result = left + right;
-  }
-  return result;
+var mycat = function(l, r) {
+  return (l && r)? l+r : l || r;
 };
