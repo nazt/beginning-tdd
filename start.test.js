@@ -30,7 +30,7 @@ YUI().use('test', 'console', function (Y) {
           //---------------------------------------------
 
           testIsItFunction: function () {
-              Y.Assert.areEqual("function", typeof mycat, "type of 'mycat' should be functionbe.");
+              Y.Assert.areEqual("function", typeof mycat, "type of 'mycat' should be function.");
           },
           testMyCatWithOneParameter: function() {
               Y.Assert.areEqual("Hello", mycat("Hello"));
@@ -46,6 +46,15 @@ YUI().use('test', 'console', function (Y) {
           },
           testMyCatWithOutParameter: function() {
               Y.Assert.areEqual(undefined, mycat());
+          },
+          testTooMuchParameters: function() {
+              Y.Assert.areEqual("Hello, nat", mycat('Hello, ', 'nat', 'third param'));
+          },
+          testBothNullReturnUndefined: function() {
+              Y.Assert.areEqual(undefined, mycat(null, null));
+          },
+          testBothNullReturnNull: function() {
+              Y.Assert.areEqual(null, mycat(null, null));
           },
 
       });
